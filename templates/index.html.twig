@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Menu</h1>
+
+    {% for flashMessage in app.flashes('success') %}
+        <div class="alert alert-success">{{ flashMessage }}</div>
+    {% endfor %}
+
+    {% if menuItems is defined %}
+        {% set count = 1 %}
+        {% for menuItem in menuItems %}
+            <h3>Item: {{ count }}</h3>
+            {% set count = count + 1 %}
+            <li>{{ menuItem.Name }}</li>
+            <li>{{ menuItem.Description }}</li>
+            <li>{{ menuItem.Price }}</li>
+        {% endfor %}
+    {% endif %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
